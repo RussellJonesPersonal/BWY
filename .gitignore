@@ -1,0 +1,7 @@
+# Node modules
+node_modules/
+
+# VS Code (ignore everything except shared settings)
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
