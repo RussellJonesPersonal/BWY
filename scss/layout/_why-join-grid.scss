@@ -1,0 +1,28 @@
+.why-join-grid {
+  display: grid;
+  gap: clamp(1.5rem, 0.9718rem + 2.2535vw, 3rem);
+  grid-template-columns: 1fr;
+  @include media-breakpoint-up(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include media-breakpoint-up(xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.why-join {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  h2 {
+    margin: 0;
+    color: $primary;
+  }
+
+  .iconify {
+    font-size: clamp(2rem, 1.1197rem + 3.7559vw, 4.5rem);
+    color: $primary-300;
+  }
+}

@@ -1,0 +1,41 @@
+.news-swiper {
+  padding-bottom: 2rem; // space for dots
+
+  .swiper-slide {
+    height: auto; // allows card to size naturally
+  }
+}
+
+.swiper-pagination {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.swiper-slide.news-card {
+  display: block;
+}
+
+.swiper-pagination {
+  position: relative;
+  margin-top: 1.25rem;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  margin: 0 6px !important;
+
+  background: rgba(0, 0, 0, 0.25);
+  opacity: 1;
+
+  border-radius: 999px; // keep pills smooth
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  width: 30px; // 3x wider than height
+  height: 10px;
+
+  background: var(--bs-primary);
+  border-radius: 6px; // fixed radius instead of 50%
+}

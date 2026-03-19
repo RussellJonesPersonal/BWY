@@ -1,0 +1,130 @@
+.site-footer {
+  color: mix(#fff, $primary, 70%);
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  // Push right-side columns away from text on xl+
+  .footer-links-col,
+  .footer-logos-col {
+    @include media-breakpoint-up(xl) {
+      margin-left: auto;
+    }
+  }
+}
+
+// ======================
+// TEXT COLUMN WIDTH
+// ======================
+
+.footer-text {
+  @include media-breakpoint-up(xl) {
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+}
+
+// ======================
+// LINKS
+// ======================
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @include media-breakpoint-up(xl) {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  a {
+    color: #fff; // pure white
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// ======================
+// LOGOS
+// ======================
+
+.footer-logos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+
+  img {
+    max-width: 26vw;
+    width: auto;
+    object-fit: contain;
+  }
+
+  @include media-breakpoint-up(xl) {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.5rem;
+
+    img {
+      width: 170px;
+    }
+  }
+}
+
+// ======================
+// DIVIDER
+// ======================
+
+.footer-divider {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+// ======================
+// SOCIAL BUTTONS
+// ======================
+
+.btn-square {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  color: $white;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background: transparent;
+
+  i {
+    font-size: 28px;
+    color: #fff;
+    line-height: 1;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+// ======================
+// FOOTER CREDIT LINK
+// ======================
+
+.footer-credit {
+  color: #fff;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

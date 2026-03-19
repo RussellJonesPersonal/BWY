@@ -1,0 +1,8 @@
+// Bootstrap overrides
+@import "base/variables";
+
+// Bootstrap core
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Theme layer
+@import "theme";

@@ -1,0 +1,23 @@
+{
+  "name": "yoga",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch scss:css",
+    "serve": "browser-sync start --server --files \"css/**/*.css, **/*.html, js/**/*.js\"",
+    "dev": "concurrently \"sass --watch scss:css --no-source-map\" \"browser-sync start --server --files 'css/**/*.css, **/*.html, js/**/*.js'\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "concurrently": "^9.2.1",
+    "sass": "^1.98.0"
+  }
+}

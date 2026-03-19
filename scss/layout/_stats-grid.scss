@@ -1,0 +1,39 @@
+.stats-grid {
+  margin-block: clamp(5rem, 4rem + 4vw, 12rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  @include media-breakpoint-up(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include media-breakpoint-up(xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  color: $white;
+}
+
+.stat-box {
+  text-align: center;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    font-size: clamp(2.5rem, 1.9718rem + 2.2535vw, 4rem);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+
+    span {
+      display: inline-block;
+    }
+  }
+
+  h4 {
+    font-family: $font-body;
+    font-size: clamp(1rem, 0.912rem + 0.3756vw, 1.25rem);
+    margin: 0;
+  }
+}

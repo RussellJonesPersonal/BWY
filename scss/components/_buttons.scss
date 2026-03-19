@@ -1,0 +1,125 @@
+// ======================
+// HELPER
+// ======================
+
+@function btn-square-padding-y($btn-font-size, $btn-line-height, $btn-padding-y, $icon-size) {
+  $border: 0.0625rem * 2;
+
+  $btn-height: ($btn-font-size * $btn-line-height) + ($btn-padding-y * 2) + $border;
+
+  @return ($btn-height - $icon-size - $border) / 2;
+}
+
+// ======================
+// GLOBAL BUTTON RESET (OPT-OUT OF ROOT SCALING)
+// ======================
+
+.btn {
+  font-size: 1rem; // base lock
+
+  @include media-breakpoint-up(lg) {
+    font-size: calc(1rem / 1.0625);
+  }
+
+  @include media-breakpoint-up(xl) {
+    font-size: calc(1rem / 1.125);
+  }
+
+  @include media-breakpoint-up(xxl) {
+    font-size: calc(1rem / 1.1875);
+  }
+}
+
+// ======================
+// SQUARE BUTTON (FULLY STABLE)
+// ======================
+
+.btn-square {
+  padding: 0;
+}
+
+.btn.btn-square {
+  // 🔒 FIXED BASE VALUES (no Bootstrap vars that scale)
+  $btn-font-size-fixed: 1rem;
+  $btn-line-height-fixed: 1.5;
+  $btn-padding-y-fixed: 0.5rem;
+
+  $icon-size: 1.875rem;
+
+  font-size: $icon-size; // icon size ONLY
+  line-height: 1;
+
+  padding-top: btn-square-padding-y($btn-font-size-fixed, $btn-line-height-fixed, $btn-padding-y-fixed, $icon-size);
+
+  padding-bottom: btn-square-padding-y($btn-font-size-fixed, $btn-line-height-fixed, $btn-padding-y-fixed, $icon-size);
+
+  padding-left: 0;
+  padding-right: 0;
+
+  aspect-ratio: 1 / 1;
+}
+
+// ======================
+// XL ADJUSTMENT
+// ======================
+
+@include media-breakpoint-up(xl) {
+  .btn.btn-square {
+    $btn-font-size-fixed: 1rem;
+    $btn-line-height-fixed: 1.5;
+
+    $icon-size: 2rem;
+
+    font-size: $icon-size;
+
+    padding-top: btn-square-padding-y($btn-font-size-fixed, $btn-line-height-fixed, 0.75rem, $icon-size);
+
+    padding-bottom: btn-square-padding-y($btn-font-size-fixed, $btn-line-height-fixed, 0.75rem, $icon-size);
+  }
+}
+
+// ======================
+// SUBTLE BUTTONS
+// ======================
+
+.btn-subtle-primary {
+  color: var(--bs-primary);
+  background-color: var(--bs-primary-bg-subtle);
+  border: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--bs-white);
+    background-color: var(--bs-primary);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-subtle-#{$color} {
+    color: var(--bs-#{$color});
+    background-color: var(--bs-#{$color}-bg-subtle);
+    border: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--bs-white);
+      background-color: var(--bs-#{$color});
+    }
+  }
+}
+
+// ======================
+// EXISTING OVERRIDE
+// ======================
+
+.btn-secondary {
+  color: #fff;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: #fff;
+  }
+}

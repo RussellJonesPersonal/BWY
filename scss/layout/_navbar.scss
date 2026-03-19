@@ -1,0 +1,418 @@
+.navbar-bwy {
+  padding-block: 1rem;
+  background-color: #fff;
+
+  // 🔒 Lock navbar font size against root scaling
+  font-size: 1rem;
+
+  @include media-breakpoint-up(lg) {
+    font-size: calc(1rem / 1.0625);
+  }
+
+  @include media-breakpoint-up(xl) {
+    font-size: calc(1rem / 1.125);
+  }
+
+  @include media-breakpoint-up(xxl) {
+    font-size: calc(1rem / 1.1875);
+  }
+
+  .container-fluid {
+    --bs-gutter-x: 1rem;
+  }
+
+  /* =========================
+     GRID + STRUCTURE
+  ========================= */
+
+  .navbar-bwy__grid {
+    display: grid;
+    align-items: center;
+    column-gap: 0.75rem;
+    row-gap: 0.5rem;
+  }
+
+  .navbar-bwy__logo {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    justify-self: start;
+
+    img {
+      display: block;
+      width: auto;
+      height: 5rem;
+      max-width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .navbar-bwy__row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+  }
+
+  .navbar-bwy__row--top {
+    grid-area: top-row;
+    justify-self: end;
+    justify-content: flex-end;
+  }
+
+  .navbar-bwy__row--bottom {
+    grid-area: bottom-row;
+    justify-self: end;
+    justify-content: space-between;
+  }
+
+  .navbar-bwy__menu {
+    grid-area: menu;
+  }
+
+  /* =========================
+     BUTTONS
+  ========================= */
+
+  .btn-primary,
+  .btn-secondary {
+    white-space: nowrap;
+    font-size: inherit;
+  }
+
+  .navbar-toggler {
+    @extend .btn-square;
+    border: none;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .btn-square {
+    background-color: $white;
+    border: none;
+    color: $primary;
+
+    --bs-btn-focus-shadow-rgb: #{to-rgb($primary)};
+    --bs-btn-focus-box-shadow: 0 0 0 0.15rem rgba(var(--bs-btn-focus-shadow-rgb), 0.25);
+
+    &:hover {
+      background-color: $gray-100;
+    }
+
+    &:focus,
+    &:active {
+      background-color: $gray-200;
+      outline: none;
+    }
+  }
+
+  /* =========================
+     NAV LINKS
+  ========================= */
+
+  .navbar-nav {
+    gap: 0;
+  }
+
+  .navbar-nav > .nav-item > .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 1rem 0;
+
+    font-size: inherit;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+
+    background: transparent;
+    border: 0;
+    text-align: left;
+
+    color: $primary-400;
+    transition: color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      color: $primary;
+    }
+
+    &.active {
+      color: $secondary;
+    }
+  }
+
+  .nav-item.show > .nav-link {
+    color: $primary;
+  }
+
+  .navbar-bwy__heading {
+    cursor: pointer;
+  }
+
+  /* =========================
+     DROPDOWN
+  ========================= */
+
+  .dropdown-menu {
+    margin: 0;
+    border-radius: 0;
+    border: 1px solid #e5e5e5;
+    padding: 0.5rem 0;
+    min-width: 16rem;
+  }
+
+  .dropdown-item {
+    padding: 0.5rem 1rem;
+    white-space: normal;
+
+    &.active {
+      color: $secondary;
+      background-color: $secondary-100;
+
+      &:hover {
+        color: $secondary-700;
+        background-color: $secondary-200;
+      }
+    }
+  }
+
+  /* =========================
+     MOBILE
+  ========================= */
+
+  @include media-breakpoint-down(lg) {
+    .navbar-bwy__grid {
+      grid-template-columns: auto 1fr;
+      grid-template-areas:
+        "logo top-row"
+        "logo bottom-row";
+    }
+
+    .navbar-bwy__row--bottom {
+      width: 100%;
+      max-width: max-content;
+    }
+
+    .navbar-bwy__menu {
+      border-left: 1px solid #e5e5e5;
+      width: min(100%, 26rem);
+    }
+
+    .offcanvas-header {
+      padding: 1rem 1rem 0.75rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .offcanvas-body {
+      padding: 0 1rem 1rem;
+    }
+
+    .navbar-nav {
+      display: block;
+    }
+
+    .nav-item {
+      border-bottom: 1px solid #ededed;
+    }
+
+    .dropdown-menu {
+      position: static !important;
+      transform: none !important;
+      width: 100%;
+      padding: 0 0 0.75rem;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .dropdown-item {
+      padding: 0.4rem 0 0.4rem 1rem;
+    }
+  }
+
+  /* =========================
+     DESKTOP
+  ========================= */
+
+  @include media-breakpoint-up(lg) {
+    .navbar-bwy__grid {
+      grid-template-columns: auto 1fr auto auto auto;
+      grid-template-areas:
+        "logo . search-button membership-button login-button"
+        "logo menu menu menu menu";
+    }
+
+    .navbar-bwy__logo img {
+      height: 7rem;
+    }
+
+    .navbar-bwy__search {
+      grid-area: search-button;
+    }
+    .navbar-bwy__membership {
+      grid-area: membership-button;
+    }
+    .navbar-bwy__login {
+      grid-area: login-button;
+    }
+    .navbar-bwy__menu {
+      grid-area: menu;
+    }
+
+    .navbar-bwy__row--top,
+    .navbar-bwy__row--bottom {
+      display: contents;
+    }
+
+    .offcanvas {
+      position: static;
+      flex-grow: 1;
+      width: auto !important;
+      height: auto !important;
+      visibility: visible !important;
+      background: transparent;
+      border: 0;
+      transform: none !important;
+    }
+
+    .offcanvas-header {
+      display: none;
+    }
+
+    .offcanvas-body {
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+    }
+
+    .nav-item {
+      position: relative;
+      border-bottom: 0;
+    }
+
+    .nav-link {
+      width: auto;
+      padding: 0.75rem 0.75rem;
+      justify-content: center;
+    }
+
+    /* 🔥 FIX: RIGHT-ALIGN LAST DROPDOWN */
+    .navbar-nav > .nav-item:last-child {
+      > .nav-link {
+        padding-right: 0;
+      }
+
+      > .dropdown-menu {
+        left: auto;
+        right: 0;
+      }
+    }
+
+    .dropdown-menu {
+      margin-top: 0.5rem;
+      border: 0;
+      --bs-dropdown-border-width: 0;
+      --bs-dropdown-border-color: transparent;
+      border-radius: $border-radius;
+
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-0.6rem);
+
+      transition:
+        opacity 0.2s ease,
+        transform 0.6s ease,
+        visibility 0.2s ease;
+    }
+
+    .dropdown-menu.show {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .navbar-toggler {
+      display: none !important;
+    }
+  }
+}
+
+/* =========================
+   CHEVRON ICON
+========================= */
+
+.dropdown-toggle::after {
+  content: "";
+  display: inline-block;
+  flex: 0 0 auto;
+
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.5rem;
+
+  background-color: currentColor;
+
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='m13.292 12l-4.6-4.6l.708-.708L14.708 12L9.4 17.308l-.708-.708z'/%3E%3C/svg%3E");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: 100% 100%;
+
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='m13.292 12l-4.6-4.6l.708-.708L14.708 12L9.4 17.308l-.708-.708z'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 100% 100%;
+
+  transition: transform 0.2s ease;
+}
+
+.dropdown-toggle.is-open::after {
+  transform: rotate(90deg);
+}
+
+/* =========================
+   RESPONSIVE NAV SPACING
+========================= */
+
+@include media-breakpoint-up(xl) {
+  .navbar-bwy .navbar-nav > .nav-item > .nav-link {
+    font-size: 1.05rem;
+    padding: 0.85rem 0.6rem;
+  }
+}
+
+@include media-breakpoint-up(xxl) {
+  .navbar-bwy .navbar-nav > .nav-item > .nav-link {
+    font-size: 1.1rem;
+    padding: 1rem 1rem;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .navbar-bwy .offcanvas {
+    width: 75vw;
+    max-width: 28rem; // prevents it getting too wide on tablets
+  }
+
+  .navbar-bwy .offcanvas {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .offcanvas {
+    transition: transform 0.3s ease;
+  }
+}

@@ -1,0 +1,58 @@
+.section {
+  padding: clamp(3rem, 2rem + 2vw, 6rem) 0;
+}
+
+.section-lg {
+  padding: clamp(4rem, 3rem + 3vw, 8rem) 0;
+}
+
+.section-xl {
+  padding: clamp(5rem, 4rem + 4vw, 12rem) 0;
+}
+
+.section-pt {
+  padding-top: clamp(3rem, 2rem + 2vw, 6rem);
+}
+
+.section-lg-pt {
+  padding-top: clamp(4rem, 3rem + 3vw, 8rem);
+}
+
+.section-xl-pt {
+  padding-top: clamp(5rem, 4rem + 4vw, 12rem);
+}
+
+.section-pb {
+  padding-bottom: clamp(3rem, 2rem + 2vw, 6rem);
+}
+
+.section-lg-pb {
+  padding-bottom: clamp(4rem, 3rem + 3vw, 8rem);
+}
+
+.section-xl-pb {
+  padding-bottom: clamp(5rem, 4rem + 4vw, 12rem);
+}
+
+.bg-gray-100 {
+  background-color: var(--bs-gray-100);
+}
+
+.bg-gradient-light {
+  background: linear-gradient(to bottom, #fff 0%, var(--bs-gray-200) 100%);
+}
+
+// Narrow container modifiers
+.container {
+  &.container-md {
+    @include media-breakpoint-up(md) {
+      max-width: map-get($container-max-widths, md);
+    }
+  }
+
+  &.container-lg {
+    @include media-breakpoint-up(lg) {
+      max-width: map-get($container-max-widths, lg);
+    }
+  }
+}
