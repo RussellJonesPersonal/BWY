@@ -6,9 +6,8 @@
   color: #fff;
   text-decoration: none;
 
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
+  // ❌ remove movement + shadow transitions
+  transition: background-color 0.3s ease;
 
   // ======================
   // RESPONSIVE RATIO
@@ -93,6 +92,7 @@
   &__summary {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+
     position: absolute;
     inset: 0;
 
@@ -120,6 +120,7 @@
   &__meta {
     font-size: 0.8rem;
     opacity: 0.85;
+
     will-change: transform, opacity;
     transform: translateZ(0);
     backface-visibility: hidden;
@@ -130,15 +131,12 @@
   }
 
   // ======================
-  // HOVER
+  // HOVER (FIXED)
   // ======================
 
   &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-
     .news-card__media img {
-      transform: scale(1.2);
+      transform: scale(1.15);
     }
 
     .news-card__overlay {

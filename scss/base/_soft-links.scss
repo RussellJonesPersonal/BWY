@@ -1,0 +1,76 @@
+// ======================
+// GLOBAL SOFT TRANSITION
+// ======================
+
+%soft-transition {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.35s ease;
+}
+
+// ======================
+// BUTTONS
+// ======================
+
+.btn {
+  @extend %soft-transition;
+
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+
+  &:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+  }
+
+  &:active {
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.04);
+  }
+}
+
+// ======================
+// LINKED CARDS ONLY
+// ======================
+
+a.card,
+.card[href] {
+  @extend %soft-transition;
+
+  // 👇 effectively "none", but animatable
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.001);
+
+  &:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.04);
+  }
+}
+
+// ======================
+// NON-LINK CARDS (STATIC)
+// ======================
+
+.card:not(a):not([href]) {
+  box-shadow: none;
+}
+
+// ======================
+// NAV LINKS (OPTIONAL)
+// ======================
+
+.nav-link {
+  transition: color 0.2s ease;
+
+  @include media-breakpoint-up(lg) {
+    &:hover {
+      color: var(--bs-primary);
+    }
+  }
+}
+
+// ======================
+// ACCESSIBILITY
+// ======================
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

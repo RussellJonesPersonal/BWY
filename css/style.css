@@ -12022,6 +12022,7 @@ body {
 }
 
 main {
+  min-height: 0;
   flex: 1 0 auto;
 }
 
@@ -12095,6 +12096,48 @@ body {
   }
 }
 
+a.card,
+.card[href], .btn {
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.35s ease;
+}
+
+.btn {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+.btn:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
+.btn:active {
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.04);
+}
+
+a.card,
+.card[href] {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.001);
+}
+a.card:hover,
+.card[href]:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.04);
+}
+
+.card:not(a):not([href]) {
+  box-shadow: none;
+}
+
+.nav-link {
+  transition: color 0.2s ease;
+}
+@media (min-width: 992px) {
+  .nav-link:hover {
+    color: var(--bs-primary);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
 .site-footer {
   color: rgb(178.8, 208.2, 216.9);
 }
@@ -12751,7 +12794,7 @@ h1 span, .h1 span {
   transition: background-color 0.15s ease;
 }
 .card:hover {
-  background: var(--bs-gray-200);
+  background: var(--white);
 }
 .card .iconify {
   font-size: 2rem;
@@ -12818,19 +12861,18 @@ h1 span, .h1 span {
 }
 .parallax-section .parallax-bg {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 130%;
-  transform: translateY(-50%);
+  inset: 0;
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
+  transform: translateZ(0);
 }
 .parallax-section .parallax-bg-inner {
   position: absolute;
-  inset: 0;
+  inset: -25% 0;
+  width: 100%;
   will-change: transform;
-  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 }
 .parallax-section .parallax-bg-inner img {
   width: 100%;
@@ -13125,7 +13167,7 @@ h1 span, .h1 span {
   border-radius: 0.75rem;
   color: #fff;
   text-decoration: none;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: background-color 0.3s ease;
   aspect-ratio: 3/4;
 }
 @media (min-width: 992px) {
@@ -13198,12 +13240,8 @@ h1 span, .h1 span {
 .news-card__meta span + span {
   margin-left: 0.5rem;
 }
-.news-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-}
 .news-card:hover .news-card__media img {
-  transform: scale(1.2);
+  transform: scale(1.15);
 }
 .news-card:hover .news-card__overlay {
   background: rgba(var(--bs-primary-rgb), 0.92);

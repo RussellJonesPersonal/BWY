@@ -1,72 +1,68 @@
 (function () {
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Improve rendering smoothness
   gsap.config({
     force3D: true,
   });
 
-  // =========================
-  // PARALLAX (MULTIPLE SECTIONS)
-  // =========================
   function initParallax() {
     const sections = document.querySelectorAll(".parallax-section");
+
+    const items = [];
 
     sections.forEach((section) => {
       const bg = section.querySelector(".parallax-bg-inner");
       if (!bg) return;
 
-      let tween;
+      const baseSpeed = parseFloat(section.dataset.parallax) || 0.15;
 
-      function buildParallax() {
-        if (tween) {
-          tween.scrollTrigger.kill();
-          tween.kill();
-        }
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-        const sectionHeight = section.offsetHeight;
-        const speed = parseFloat(section.dataset.parallax) || 0.12;
-        const travel = Math.round(sectionHeight * speed);
+      const speed = isMobile ? baseSpeed : baseSpeed * 2;
 
-        tween = gsap.fromTo(
-          bg,
-          { y: -travel },
-          {
-            y: travel,
-            ease: "none",
-            scrollTrigger: {
-              trigger: section,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 0.6,
-              invalidateOnRefresh: true,
-            },
-          },
-        );
-      }
-
-      buildParallax();
-
-      ScrollTrigger.addEventListener("refreshInit", buildParallax);
+      items.push({
+        section,
+        bg,
+        speed,
+      });
     });
+
+    function update() {
+      const viewportHeight = window.innerHeight;
+
+      items.forEach(({ section, bg, speed }) => {
+        const rect = section.getBoundingClientRect();
+
+        // Progress through viewport
+        const progress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+
+        // Clamp 0–1
+        const clamped = Math.max(0, Math.min(1, progress));
+
+        // ✅ Eased movement (premium feel)
+        const eased = Math.sin((clamped - 0.5) * Math.PI);
+
+        const maxTravel = section.offsetHeight * speed;
+
+        const y = eased * maxTravel;
+
+        gsap.set(bg, { y });
+      });
+    }
+
+    function rafLoop() {
+      update();
+      requestAnimationFrame(rafLoop);
+    }
+
+    rafLoop();
   }
 
-  // =========================
-  // INIT
-  // =========================
-  function init() {
-    initParallax();
-    ScrollTrigger.refresh();
-  }
-
-  // =========================
-  // SAFE LOAD
-  // =========================
-  if (document.readyState === "complete") {
-    requestAnimationFrame(init);
-  } else {
-    window.addEventListener("load", () => {
-      requestAnimationFrame(init);
+  window.addEventListener("load", () => {
+    requestAnimationFrame(() => {
+      initParallax();
     });
-  }
+  });
+
+  window.addEventListener("resize", () => {
+    // Values recalc automatically each frame
+  });
 })();
