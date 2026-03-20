@@ -1,10 +1,12 @@
 (function () {
   gsap.registerPlugin(ScrollTrigger);
 
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
   const DEFAULTS = {
-    duration: 0.8,
+    duration: isMobile ? 0.6 : 0.8,
     ease: "power2.out",
-    distance: 40,
+    distance: isMobile ? 20 : 40,
   };
 
   function getInitialOffset(type, distance) {
@@ -24,9 +26,24 @@
     }
   }
 
-  function initAnimations() {
-    console.log("INIT RUNNING");
+  function createScrollTrigger(el, animation) {
+    return {
+      trigger: el,
+      start: "top 92%",
+      toggleActions: isMobile
+        ? "play none none none"
+        : "play reverse play reverse",
+      invalidateOnRefresh: true,
+      onLeave: (self) => {
+        if (!isMobile) gsap.to(self.animation, { timeScale: 1.5 });
+      },
+      onEnterBack: (self) => {
+        if (!isMobile) gsap.to(self.animation, { timeScale: 1 });
+      },
+    };
+  }
 
+  function initAnimations() {
     const elements = document.querySelectorAll("[data-animate]");
 
     elements.forEach((el) => {
@@ -34,16 +51,22 @@
       if (!type) return;
 
       const delay = parseFloat(el.dataset.delay) || 0;
-      const duration = parseFloat(el.dataset.duration) || DEFAULTS.duration;
+      const duration =
+        parseFloat(el.dataset.duration) || DEFAULTS.duration;
       const ease = el.dataset.ease || DEFAULTS.ease;
       const stagger = parseFloat(el.dataset.stagger);
-      const distance = parseFloat(el.dataset.distance) || DEFAULTS.distance;
+      const distance =
+        parseFloat(el.dataset.distance) || DEFAULTS.distance;
 
       const selector = el.dataset.children;
       let targets;
 
       try {
-        targets = selector ? el.querySelectorAll(selector.trim()) : el.children.length ? Array.from(el.children) : [el];
+        targets = selector
+          ? el.querySelectorAll(selector.trim())
+          : el.children.length
+          ? Array.from(el.children)
+          : [el];
       } catch (e) {
         console.warn("Invalid selector:", selector);
         return;
@@ -70,14 +93,8 @@
             delay,
             ease,
             stagger,
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              toggleActions: "play reverse play reverse",
-              onLeave: (self) => gsap.to(self.animation, { timeScale: 1.5 }),
-              onEnterBack: (self) => gsap.to(self.animation, { timeScale: 1 }),
-            },
-          },
+            scrollTrigger: createScrollTrigger(el),
+          }
         );
         return;
       }
@@ -97,29 +114,26 @@
           duration,
           delay,
           ease,
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            toggleActions: "play reverse play reverse",
-            onLeave: (self) => gsap.to(self.animation, { timeScale: 1.5 }),
-            onEnterBack: (self) => gsap.to(self.animation, { timeScale: 1 }),
-          },
-        },
+          scrollTrigger: createScrollTrigger(el),
+        }
       );
     });
   }
 
-  if (document.readyState === "complete") {
-    requestAnimationFrame(() => {
-      initAnimations();
-      ScrollTrigger.refresh();
-    });
-  } else {
-    window.addEventListener("load", () => {
-      requestAnimationFrame(() => {
-        initAnimations();
-        ScrollTrigger.refresh();
-      });
-    });
+  function init() {
+    initAnimations();
+    ScrollTrigger.refresh();
   }
+
+  // Run ASAP (better than waiting for full load)
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  // Refresh again after everything fully loads (images, fonts, etc.)
+  window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
+  });
 })();

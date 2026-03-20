@@ -1,122 +1,155 @@
 (function () {
-  const CONFIG = {
-    selector: "h1",
-    startDelay: 200, // ms before animation starts
-    totalDuration: 3500, // total animation duration
-    letterDuration: 1500, // duration of each letter animation
-    blurAmount: 12, // px
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+  const DEFAULTS = {
+    duration: isMobile ? 600 : 800,
+    distance: isMobile ? 20 : 40,
+    stagger: isMobile ? 50 : 80,
+    easing: "cubic-bezier(0.2, 0.65, 0.2, 1)",
+    threshold: 0.12,
+    rootMargin: isMobile ? "0px 0px -8% 0px" : "0px 0px -10% 0px",
   };
 
-  let currentAnimation = null;
-  let lastWidth = window.innerWidth;
-
-  function animateText(el) {
-    if (!el) return;
-
-    // Kill any running animation
-    if (currentAnimation) {
-      clearTimeout(currentAnimation);
-      currentAnimation = null;
+  function getInitialStyles(type, distance) {
+    switch (type) {
+      case "fade-up":
+        return {
+          opacity: "0",
+          transform: `translate3d(0, ${distance}px, 0)`,
+        };
+      case "fade-down":
+        return {
+          opacity: "0",
+          transform: `translate3d(0, -${distance}px, 0)`,
+        };
+      case "slide-left":
+        return {
+          opacity: "0",
+          transform: `translate3d(${distance}px, 0, 0)`,
+        };
+      case "slide-right":
+        return {
+          opacity: "0",
+          transform: `translate3d(-${distance}px, 0, 0)`,
+        };
+      case "zoom-in":
+        return {
+          opacity: "0",
+          transform: "scale(0.9)",
+        };
+      default:
+        return {
+          opacity: "0",
+          transform: `translate3d(0, ${distance}px, 0)`,
+        };
     }
+  }
 
-    const originalText = el.dataset.originalText || el.textContent;
-    el.dataset.originalText = originalText;
+  function getTargets(el) {
+    const selector = el.dataset.children;
 
-    // Prevent layout jump
-    el.style.minHeight = el.offsetHeight + "px";
+    try {
+      if (selector) {
+        return Array.from(el.querySelectorAll(selector.trim()));
+      }
 
-    // Clear and rebuild
-    el.innerHTML = "";
+      if (el.children.length) {
+        return Array.from(el.children);
+      }
 
-    const words = originalText.split(" ");
+      return [el];
+    } catch (e) {
+      console.warn("Invalid selector:", selector);
+      return [];
+    }
+  }
 
-    // Count characters (excluding spaces)
-    const totalChars = originalText.replace(/\s/g, "").length;
+  function prepareElement(target, initialStyles, duration, delay, easing) {
+    target.style.opacity = initialStyles.opacity;
+    target.style.transform = initialStyles.transform;
+    target.style.transitionProperty = "opacity, transform";
+    target.style.transitionDuration = `${duration}ms`;
+    target.style.transitionTimingFunction = easing;
+    target.style.transitionDelay = `${delay}ms`;
+    target.style.willChange = "opacity, transform";
+  }
 
-    const perCharDelay = totalChars > 1 ? (CONFIG.totalDuration - CONFIG.letterDuration) / (totalChars - 1) : 0;
+  function revealElement(target) {
+    target.style.opacity = "1";
+    target.style.transform = "translate3d(0, 0, 0) scale(1)";
 
-    let charIndex = 0;
+    window.setTimeout(() => {
+      target.style.willChange = "auto";
+    }, 1000);
+  }
 
-    words.forEach((word, wIndex) => {
-      const wordSpan = document.createElement("span");
-      wordSpan.style.display = "inline-block";
-      wordSpan.style.whiteSpace = "nowrap"; // 🔑 prevents mid-word breaks
+  function initAnimations() {
+    const animatedBlocks = document.querySelectorAll("[data-animate]");
+    if (!animatedBlocks.length) return;
 
-      [...word].forEach((char) => {
-        const charSpan = document.createElement("span");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
 
-        charSpan.textContent = char;
-        charSpan.style.display = "inline-block";
-        charSpan.style.opacity = "0";
-        charSpan.style.filter = `blur(${CONFIG.blurAmount}px)`;
+          const el = entry.target;
+          const targets = el._animationTargets || [];
+          if (!targets.length) {
+            observer.unobserve(el);
+            return;
+          }
 
-        charSpan.style.transition = `
-          opacity ${CONFIG.letterDuration}ms ease,
-          filter ${CONFIG.letterDuration}ms ease
-        `;
+          targets.forEach((target, index) => {
+            const delay = Number(target.dataset._computedDelay || 0);
+            window.setTimeout(() => revealElement(target), delay);
+          });
 
-        charSpan.style.transitionDelay = `${charIndex * perCharDelay}ms`;
+          observer.unobserve(el);
+        });
+      },
+      {
+        threshold: DEFAULTS.threshold,
+        rootMargin: DEFAULTS.rootMargin,
+      },
+    );
 
-        wordSpan.appendChild(charSpan);
+    animatedBlocks.forEach((el) => {
+      const type = el.dataset.animate;
+      if (!type) return;
 
-        charIndex++;
+      const duration = parseFloat(el.dataset.duration) || DEFAULTS.duration / 1000;
+      const distance = parseFloat(el.dataset.distance) || DEFAULTS.distance;
+      const easing = el.dataset.ease || DEFAULTS.easing;
+      const baseDelay = (parseFloat(el.dataset.delay) || 0) * 1000;
+      const staggerAttr = el.dataset.stagger;
+      const stagger =
+        staggerAttr !== undefined && staggerAttr !== "" ? parseFloat(staggerAttr) * 1000 : DEFAULTS.stagger;
+
+      const targets = getTargets(el);
+      if (!targets.length) return;
+
+      const initialStyles = getInitialStyles(type, distance);
+      const computedDuration = Math.round(duration * 1000);
+      const perItemStagger = targets.length > 1 ? Math.max(0, stagger) : 0;
+
+      targets.forEach((target, index) => {
+        const computedDelay = baseDelay + index * perItemStagger;
+        target.dataset._computedDelay = String(computedDelay);
+        prepareElement(target, initialStyles, computedDuration, 0, easing);
       });
 
-      el.appendChild(wordSpan);
-
-      // Add space between words
-      if (wIndex < words.length - 1) {
-        el.appendChild(document.createTextNode(" "));
-      }
+      el._animationTargets = targets;
+      observer.observe(el);
     });
-
-    // Start animation after delay
-    currentAnimation = setTimeout(() => {
-      const spans = el.querySelectorAll("span span");
-
-      spans.forEach((span) => {
-        span.style.opacity = "1";
-        span.style.filter = "blur(0px)";
-      });
-
-      // Reveal element (prevents initial flash)
-      el.classList.add("is-ready");
-    }, CONFIG.startDelay);
   }
 
-  // Debounce helper
-  function debounce(fn, delay = 200) {
-    let t;
-    return function () {
-      clearTimeout(t);
-      t = setTimeout(fn, delay);
-    };
+  function start() {
+    initAnimations();
   }
 
-  function init() {
-    const el = document.querySelector(CONFIG.selector);
-    if (!el) return;
-
-    // Hide immediately to prevent flash
-    el.classList.add("js-animate-text");
-
-    animateText(el);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
   }
-
-  // Initial run
-  window.addEventListener("load", init);
-
-  // Re-run on significant resize only
-  window.addEventListener(
-    "resize",
-    debounce(() => {
-      const el = document.querySelector(CONFIG.selector);
-      if (!el) return;
-
-      if (Math.abs(window.innerWidth - lastWidth) > 50) {
-        lastWidth = window.innerWidth;
-        animateText(el);
-      }
-    }, 250),
-  );
 })();
