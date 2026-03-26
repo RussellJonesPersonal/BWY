@@ -1,6 +1,4 @@
 (function () {
-  gsap.registerPlugin(ScrollTrigger);
-
   // =========================
   // COUNT UP
   // =========================
@@ -10,7 +8,7 @@
 
     const obj = { value: 0 };
 
-    const tween = gsap.to(obj, {
+    gsap.to(obj, {
       value: target,
       duration,
       ease: "power1.out",
@@ -18,43 +16,37 @@
         el.textContent = Math.floor(obj.value).toLocaleString();
       },
     });
-
-    return tween;
   }
 
   // =========================
-  // INIT COUNTERS
+  // INIT COUNTERS (IO)
   // =========================
   function initCounters() {
     const counters = document.querySelectorAll("[data-count]");
 
-    counters.forEach((el) => {
-      let tween;
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
 
-      ScrollTrigger.create({
-        trigger: el,
-        start: "top 95%",
-        end: "bottom top",
+            // 🔑 run once, then stop observing
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
 
-        onEnter: () => {
-          tween = animateCount(el);
-        },
+        // 🔑 THIS is the magic:
+        // triggers BEFORE fully in view (fixes mobile delay)
+        rootMargin: "0px 0px -10% 0px",
 
-        onLeave: () => {
-          if (tween) tween.kill();
-          el.textContent = "0";
-        },
+        threshold: 0,
+      },
+    );
 
-        onEnterBack: () => {
-          tween = animateCount(el);
-        },
-
-        onLeaveBack: () => {
-          if (tween) tween.kill();
-          el.textContent = "0";
-        },
-      });
-    });
+    counters.forEach((el) => observer.observe(el));
   }
 
   // =========================
@@ -62,7 +54,6 @@
   // =========================
   function init() {
     initCounters();
-    ScrollTrigger.refresh();
   }
 
   // =========================
