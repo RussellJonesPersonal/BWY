@@ -6,6 +6,7 @@
 // Layout
 @import "layout/header";
 @import "layout/footer";
+@import "layout/modals";
 @import "layout/sections";
 @import "layout/navbar";
 @import "layout/hero";
@@ -14,16 +15,34 @@
 @import "layout/stats-grid";
 @import "layout/why-join-grid";
 @import "layout/headings";
+@import "layout/page-title";
+@import "layout/content-area";
+@import "layout/news-landing";
+@import "layout/left-right-segments";
+@import "layout/content-section";
+@import "layout/content-columns";
+@import "layout/content-image-pair";
+@import "layout/register";
+@import "layout/benefits";
 
 // Components
 @import "components/buttons";
 @import "components/cards";
-@import "components/navbar";
 @import "components/swiper";
 @import "components/news-card";
 @import "components/communities-section";
 @import "components/testimonials-glass";
+@import "components/announcements";
+@import "components/sidebar-card";
+@import "components/team";
+@import "components/accordion";
+@import "components/gallery";
+@import "components/om-divider";
+@import "components/news-article";
 
 // Utilities
 @import "utilities/helpers";
 @import "utilities/spacers";
+
+// Regional colour accents (must follow existing component styles)
+@import "components/regional-themes";

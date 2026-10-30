@@ -1,0 +1,349 @@
+// =========================
+// MEMBERSHIP COMPARISON
+// =========================
+
+.membership-comparison {
+  position: relative;
+
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  border-radius: $border-radius-lg;
+
+  -webkit-overflow-scrolling: touch;
+
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 4px;
+  }
+}
+
+.membership-comparison-table {
+  width: 100%;
+  min-width: 900px;
+  margin: 0;
+
+  table-layout: fixed;
+
+  border-collapse: separate;
+  border-spacing: 0;
+
+  color: $body-color;
+  font-size: 0.85rem;
+
+  th,
+  td {
+    padding: 0.75rem 0.5rem;
+
+    border: 0;
+    border-right: 1px solid $gray-200;
+    border-bottom: 1px solid $gray-200;
+
+    text-align: center;
+    vertical-align: middle;
+
+    background-color: $white;
+
+    transition: background-color 0.25s ease;
+  }
+
+  // First column
+
+  th:first-child {
+    position: sticky;
+    z-index: 3;
+    left: 0;
+
+    width: 140px;
+
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+
+    text-align: left;
+
+    background-color: $gray-100;
+
+    box-shadow: 1px 0 0 $gray-200;
+
+    font-size: 0.8rem;
+    line-height: 1.25;
+  }
+
+  // Plan columns
+
+  th:not(:first-child),
+  td:not(:first-child) {
+    width: 110px;
+  }
+
+  // Header
+
+  thead {
+    th {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+
+      color: $primary;
+
+      font-size: 0.8rem;
+      font-weight: 600;
+      line-height: 1.2;
+
+      background-color: $gray-100;
+    }
+
+    th:first-child {
+      color: $body-color;
+    }
+  }
+
+  // Last column
+
+  th:last-child,
+  td:last-child {
+    border-right: 0;
+  }
+
+  // =========================
+  // GROUP ROWS
+  // =========================
+
+  .membership-comparison-group {
+    th,
+    td {
+      padding: 0.75rem 1rem;
+
+      border: 0;
+      border-bottom: 1px solid $gray-200;
+
+      background-color: $primary;
+      color: $white;
+
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    th {
+      position: sticky;
+      z-index: 4;
+      left: 0;
+
+      width: 140px;
+
+      box-shadow: 1px 0 0 rgba($white, 0.15);
+    }
+
+    td {
+      text-align: left;
+    }
+  }
+
+  // =========================
+  // SELECTED PLAN
+  // =========================
+
+  [data-plan].is-highlighted {
+    background-color: rgba($primary, 0.08);
+  }
+
+  thead [data-plan].is-highlighted {
+    position: relative;
+
+    background-color: rgba($primary, 0.14);
+    color: $primary;
+
+    &::before {
+      content: "Selected";
+
+      display: block;
+
+      margin-bottom: 0.4rem;
+
+      color: $secondary;
+
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+  }
+
+  .membership-comparison-actions {
+    [data-plan].is-highlighted {
+      .btn {
+        --bs-btn-color: #{$white};
+        --bs-btn-bg: #{$primary};
+        --bs-btn-border-color: #{$primary};
+        --bs-btn-hover-color: #{$white};
+        --bs-btn-hover-bg: #{shade-color($primary, 10%)};
+        --bs-btn-hover-border-color: #{shade-color($primary, 10%)};
+      }
+    }
+  }
+}
+
+// =========================
+// PLAN HEADER
+// =========================
+
+.membership-plan-name {
+  display: block;
+
+  margin-bottom: 0.4rem;
+}
+
+.membership-plan-price {
+  display: block;
+
+  color: $secondary;
+
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+// =========================
+// STARS
+// =========================
+
+.membership-star {
+  color: $secondary;
+
+  font-size: 1.15rem;
+}
+
+// =========================
+// QUALIFIED BENEFITS
+// =========================
+
+.membership-cell-note {
+  display: inline-block;
+
+  color: $body-color;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+// =========================
+// ACTION ROW
+// =========================
+
+.membership-comparison-actions {
+  th,
+  td {
+    padding-block: 1rem;
+
+    border-bottom: 0;
+  }
+
+  .btn {
+    white-space: nowrap;
+  }
+}
+
+// =========================
+// MOBILE SWIPE MESSAGE
+// =========================
+
+.membership-comparison-swipe {
+  display: block;
+
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}
+
+// =========================
+// NOTES
+// =========================
+
+.membership-comparison-notes {
+  padding-top: 1.5rem;
+
+  p {
+    max-width: 70rem;
+  }
+}
+
+// =========================
+// MD+
+// =========================
+
+@include media-breakpoint-up(md) {
+  .membership-comparison-group {
+    th {
+      width: 180px;
+    }
+
+    th,
+    td {
+      padding: 0.75rem 1.25rem;
+
+      font-size: 0.85rem;
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .membership-comparison-group {
+    th {
+      width: 250px;
+    }
+  }
+}
+
+// =========================
+// XL+
+// =========================
+
+@include media-breakpoint-up(xl) {
+  .membership-comparison-table {
+    min-width: 100%;
+
+    font-size: 1rem;
+
+    th,
+    td {
+      padding: 1rem 0.75rem;
+    }
+
+    th:first-child {
+      width: 250px;
+
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+
+      font-size: 1rem;
+    }
+
+    th:not(:first-child),
+    td:not(:first-child) {
+      width: auto;
+    }
+
+    thead {
+      th {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .membership-plan-price {
+    font-size: 1.25rem;
+  }
+
+  .membership-star {
+    font-size: 1.4rem;
+  }
+
+  .membership-cell-note {
+    font-size: 0.825rem;
+  }
+}

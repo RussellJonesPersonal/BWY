@@ -1,0 +1,32 @@
+.om-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  width: 100%;
+  color: $gray-300;
+
+  &::before,
+  &::after {
+    content: "";
+
+    flex: 1 1 auto;
+    height: 1px;
+
+    background-color: currentColor;
+  }
+
+  &__icon {
+    display: block;
+    flex: 0 0 auto;
+
+    width: clamp(40px, 4vw, 80px);
+    aspect-ratio: 1020 / 731;
+
+    background-color: currentColor;
+
+    -webkit-mask: url("../assets/images/lotus-flower.svg") center / contain no-repeat;
+
+    mask: url("../assets/images/lotus-flower.svg") center / contain no-repeat;
+  }
+}

@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Content blocks - The British Wheel of Yoga</title>
+    <!-- Google font  -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Swiper js  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?v=5" />
+    <!-- Boostrap cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css?v=5" rel="stylesheet" />
+    <!-- Custom style  -->
+    <link href="css/style.css?v=5" rel="stylesheet" />
+    <script>
+      document.documentElement.classList.add("page-loading");
+    </script>
+
+    <link rel="icon" href="favico.png" sizes="any" />
+    <link rel="icon" type="image/png" href="favico.png" />
+  </head>
+  <body>
+    <main>
+      <!-- Navbar  -->
+      <!-- This loads /partials/nav.html, and the js/navigation.js file adds .active classes to the defined section and page -->
+      <div data-component="main-nav" data-section="about-bwy" data-page="why-join"></div>
+
+      <!-- Page title -->
+      <!-- Breadcrumb is auto-generated using the js/navigation.js script  -->
+
+      <header class="page-title">
+        <div class="container">
+          <nav data-component="breadcrumb" aria-label="breadcrumb"></nav>
+
+          <h1>Content blocks</h1>
+
+          <div class="page-title-art">
+            <img
+              src="assets/images/poses/pose_silhouette_1.svg"
+              alt="An yoga pose"
+              class="page-title-icon"
+              id="random-pose"
+            />
+          </div>
+        </div>
+      </header>
+
+      <!-- Sidebar content section -->
+      <section class="content-section">
+        <div class="container">
+          <div class="row g-5">
+            <div class="col-lg-8">
+              <div class="content-body">
+                <h2>Sidebar content section</h2>
+                <h4>This page is (intentionally) very visually busy.</h4>
+                <p>
+                  The purpose of this page is to demonstrate and test all the significant components in one place. A
+                  normal page would not contain this many components.
+                </p>
+                <h4>This section</h4>
+                <p>This is a section that consists of a large content area on the left, and a sidebar on the right.</p>
+                <p>On mobile all content areas "stack," meaning the sidebar will appear below this content.</p>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum velit assumenda, accusantium quisquam
+                  voluptatem soluta cumque ad libero quos doloribus voluptate iusto ipsum, dolorem omnis mollitia illum
+                  expedita, impedit fugiat. Officia labore quis a. Nesciunt tenetur accusantium necessitatibus
+                  repudiandae numquam magni culpa, magnam dolor repellendus, mollitia itaque veniam veritatis facilis.
+                </p>
+                <p>
+                  An image with a 16:9 aspect ratio applied. Adding this class makes the image keep a 16:9 ratio
+                  regardless of the original size (edges might be cut off, so use with caution).
+                </p>
+                <p>Other aspect ratios are 16:9, 4:3, 1:1, and 21:9</p>
+                <p>
+                  This uses the <strong>rounded-2</strong> class to round the corners of the image. This is optional,
+                  but recommended.
+                </p>
+                <div class="ratio ratio-16x9">
+                  <img src="assets/images/yoga_temp_10.jpg" alt="" class="w-100 h-100 object-fit-cover rounded-2" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar  -->
+            <aside class="col-lg-4">
+              <div class="sidebar-sticky d-flex flex-column gap-4">
+                <!-- Image / text card -->
+                <div class="card sidebar-card border-0">
+                  <img src="assets/images/yoga-temp-16-9.jpg" class="card-img-top rounded-2" alt="Yoga practice" />
+
+                  <div class="card-body">
+                    <p class="card-text mb-0">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Related links card -->
+                <div class="card sidebar-card border-0">
+                  <div class="card-header">
+                    <h2 class="h4 card-title mb-0">Related links</h2>
+                  </div>
+
+                  <div class="list-group list-group-flush sidebar-list-group">
+                    <a href="#" class="list-group-item list-group-item-action"> About BWY </a>
+
+                    <a href="#" class="list-group-item list-group-item-action"> Meet the team </a>
+
+                    <a href="#" class="list-group-item list-group-item-action"> Our partners </a>
+
+                    <a href="#" class="list-group-item list-group-item-action"> Strategic plan </a>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Narrow text block -->
+      <section class="content-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+              <div class="content-body">
+                <h2>A narrow text block</h2>
+                <p>
+                  Using a narrow text block can make the content easier to read on wide screens. The eye follows narrow
+                  text more easlily than long text that takes up the entire width of the page.
+                </p>
+                <p>
+                  I suggest we make all text in this template use the narrow content space (unless it sits next to a
+                  sidebar or other formatting that requires a wider text width).
+                </p>
+                <p>
+                  For demonstration purposes, I've added a full width text area below, so you can see the difference.
+                </p>
+                <p>
+                  I've added a divider below. These can be added between sections. If you add a standard HR within a
+                  section, it will just be a line, not styled as shown.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <section class="content-section">
+        <div class="container">
+          <div class="om-divider" aria-hidden="true">
+            <span class="om-divider__icon"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Wide text block -->
+      <section class="content-section">
+        <div class="container">
+          <div class="content-body">
+            <h2>A wide text block</h2>
+            <p>
+              Using a wide text block makes it harder to read on large screens. It's harder for the eye to track a line
+              of text that is very long, and the text can end up looking a bit "lost" and slightly off-putting. It
+              doesn't <em>feel</em> easy to read, even before you begin.
+            </p>
+            <p>
+              I suggest we make all text in this template use the narrow content space (unless it sits next to a sidebar
+              or other formatting that requires a wider text width).
+            </p>
+            <p>
+              For demonstration purposes, compare this to the narrow text passage above. (On smaller screens they look
+              the same.)
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Two images  -->
+      <section class="content-section">
+        <div class="container">
+          <p>
+            This layout is 2 images side-by-side. The images are set to 5:4 ratio automatically, which ensures a good
+            appearance at all screen resolutions. Note that this means parts of an image are automatically cropped, so
+            if you use an image composition that is not suitable for this layout, parts may be cropped.
+          </p>
+          <p class="text-muted">The text shown here is not part of the component.</p>
+          <div class="content-split">
+            <div class="content-split__item">
+              <div class="content-split__media rounded-2">
+                <img src="assets/images/yoga_temp_4.jpg" alt="" />
+              </div>
+            </div>
+
+            <div class="content-split__item">
+              <div class="content-split__media rounded-2">
+                <img src="assets/images/yoga_temp_5.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reflow text block -->
+      <section class="content-section">
+        <div class="container">
+          <div class="content-body">
+            <h2>Reflow content across columns</h2>
+            <div class="content-columns">
+              <p>
+                This layout automatically reflows the text across two columns (on larger screens). It's ideal for
+                sections where there is quite a lot of content, but want to avoid (a) a long passage using the narrow
+                text style, and (b) a passage of wider text, which can become difficult to read.
+              </p>
+              <p>The remainde of this is Latin text. Try resizing the screen to see how this behaves.</p>
+              <p>
+                Note, it is normal (and unavoidable) for this layout to have "ragged" endings, with one column taller
+                than another.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus
+                posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.
+              </p>
+
+              <p>
+                Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus mollis interdum. Vestibulum id
+                ligula porta felis euismod semper.
+              </p>
+
+              <p>
+                Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+              </p>
+
+              <p>
+                Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at
+                eros. Donec sed odio dui.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <section class="content-section">
+        <div class="container">
+          <div class="om-divider" aria-hidden="true">
+            <span class="om-divider__icon"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Two columns images  -->
+      <section class="content-section">
+        <div class="container">
+          <div class="content-split">
+            <div class="content-split__item">
+              <div class="content-split__media rounded-2">
+                <img src="assets/images/yoga_temp_1.jpg" alt="" />
+              </div>
+            </div>
+
+            <div class="content-split__item content-split__text">
+              <h2>Image and text</h2>
+
+              <p>This layout can combine an image with formatted text. The image can go on the left or the right.</p>
+              <p>For best results, don't add lengthy text or lots of formatting here.</p>
+
+              <h3>A subheading</h3>
+
+              <ul>
+                <li>Bullet point content</li>
+                <li>Additional information</li>
+                <li>Another useful point</li>
+              </ul>
+
+              <p>Paragraphs, headings and lists can all be included.</p>
+              <p>
+                <a href="javascript:void(0)" class="btn btn-primary">Call to action</a>
+                <a href="javascript:void(0)" class="btn btn-light">Another</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Divider -->
+      <section class="content-section">
+        <div class="container">
+          <div class="om-divider" aria-hidden="true">
+            <span class="om-divider__icon"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alternating left / right section -->
+      <section class="content-section">
+        <div class="container">
+          <div class="content-alternating">
+            <section class="content-alternating-segment">
+              <div class="content-alternating-image">
+                <img src="assets/images/yoga_temp_5.jpg" alt="Yoga teacher leading a class" />
+              </div>
+
+              <div class="content-alternating-text">
+                <h2>Alternating left - right content</h2>
+
+                <p>
+                  In this content block, you can add as many "segments" as you wish. On mobile the segments will stack.
+                  On desktop they will alternate as you see below. Images automatically 5:4 ratio.
+                </p>
+              </div>
+            </section>
+
+            <section class="content-alternating-segment">
+              <div class="content-alternating-image">
+                <img src="assets/images/yoga_temp_10.jpg" alt="People practising yoga together" />
+              </div>
+
+              <div class="content-alternating-text">
+                <h2>Yoga for everyone</h2>
+
+                <p>
+                  Add call-to-action buttons if you wish. <strong>Recommendation:</strong> keep button text short so it
+                  works on small screens.
+                </p>
+                <p>
+                  Text in these spaces works best if each segment uses brief content that takes up 4-6 lines on desktop.
+                </p>
+
+                <p><a href="javascript:void(0)" class="btn btn-primary">Call to action</a></p>
+              </div>
+            </section>
+
+            <section class="content-alternating-segment">
+              <div class="content-alternating-image">
+                <img src="assets/images/yoga_temp_4.jpg" alt="Yoga class in a bright studio" />
+              </div>
+
+              <div class="content-alternating-text">
+                <h2>Learning and development</h2>
+
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel
+                  eu leo.
+                </p>
+
+                <p>
+                  Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum
+                  at eros.
+                </p>
+              </div>
+            </section>
+
+            <section class="content-alternating-segment">
+              <div class="content-alternating-image">
+                <img src="assets/images/yoga_temp_1.jpg" alt="Yoga teacher demonstrating a pose" />
+              </div>
+
+              <div class="content-alternating-text">
+                <h2>A nationwide community</h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.</p>
+
+                <p>Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla.</p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <!-- Accordion block -->
+      <section class="content-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+              <div class="content-body">
+                <h2>An accordion</h2>
+                <div class="accordion bwy-accordion" id="bwyAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button
+                        class="accordion-button"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne"
+                        aria-expanded="true"
+                        aria-controls="collapseOne"
+                      >
+                        <span>What is the British Wheel of Yoga?</span>
+
+                        <span class="iconify accordion-chevron" data-icon="mdi:chevron-right" aria-hidden="true"></span>
+                      </button>
+                    </h2>
+
+                    <div
+                      id="collapseOne"
+                      class="accordion-collapse collapse show"
+                      aria-labelledby="headingOne"
+                      data-bs-parent="#bwyAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          This is an example of an accordion. For demo purposes we've left the first box expanded. Tap
+                          others to see how it works. There are no realistic limits on what content each box can
+                          contain, but we recommend keeping them relatively brief. An accordion is a way to help people
+                          find content easily, it is not a replacement for building half a dozen other pages.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo"
+                        aria-expanded="false"
+                        aria-controls="collapseTwo"
+                      >
+                        <span>How do I find a yoga teacher?</span>
+
+                        <span class="iconify accordion-chevron" data-icon="mdi:chevron-right" aria-hidden="true"></span>
+                      </button>
+                    </h2>
+
+                    <div
+                      id="collapseTwo"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="headingTwo"
+                      data-bs-parent="#bwyAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis
+                          euismod semper.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree"
+                        aria-expanded="false"
+                        aria-controls="collapseThree"
+                      >
+                        <span>What training courses are available?</span>
+
+                        <span class="iconify accordion-chevron" data-icon="mdi:chevron-right" aria-hidden="true"></span>
+                      </button>
+                    </h2>
+
+                    <div
+                      id="collapseThree"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="headingThree"
+                      data-bs-parent="#bwyAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi leo risus, porta ac consectetur
+                          ac, vestibulum at eros.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour"
+                        aria-expanded="false"
+                        aria-controls="collapseFour"
+                      >
+                        <span>How do I join the BWY?</span>
+
+                        <span class="iconify accordion-chevron" data-icon="mdi:chevron-right" aria-hidden="true"></span>
+                      </button>
+                    </h2>
+
+                    <div
+                      id="collapseFour"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="headingFour"
+                      data-bs-parent="#bwyAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui. Cras mattis
+                          consectetur purus sit amet fermentum.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video block -->
+      <section class="content-section">
+        <div class="container">
+          <div class="content-body">
+            <div class="ratio ratio-16x9 rounded-2 overflow-hidden">
+              <div class="youtube-player" data-video-id="8lkJi4ldZ90"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Light attention block -->
+      <section class="content-section bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+              <div class="content-body">
+                <h2>A subtle attention block</h2>
+                <p>This block uses a subtle pale colour background to draw attention.</p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed architecto quae aut expedita veniam autem
+                  quod blanditiis perferendis? Accusamus repellendus eius quia nemo delectus ea ab soluta illo esse
+                  dolor. Aspernatur natus adipisci explicabo magni velit doloribus architecto at iure, fuga aliquid
+                  facere itaque consequatur minus harum. Magni, dicta! Aliquam, rerum reprehenderit. Aliquam officia
+                  atque, mollitia quibusdam perspiciatis ipsa necessitatibus!
+                </p>
+                <p>
+                  <a href="javascript:void(0)" class="btn btn-primary">Primary button</a>
+                  <a href="javascript:void(0)" class="btn btn-secondary">Secondary button</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video grid -->
+      <section class="content-section">
+        <div class="container">
+          <div class="content-body">
+            <div class="row g-5">
+              <div class="col-md-6">
+                <div class="ratio ratio-16x9 rounded-2 overflow-hidden">
+                  <div class="youtube-player" data-video-id="BPK9WNtpBgk"></div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="ratio ratio-16x9 rounded-2 overflow-hidden">
+                  <div class="youtube-player" data-video-id="hHhxKkskHDg"></div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="ratio ratio-16x9 rounded-2 overflow-hidden">
+                  <div class="youtube-player" data-video-id="bJJWArRfKa0"></div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="ratio ratio-16x9 rounded-2 overflow-hidden">
+                  <div class="youtube-player" data-video-id="V5DjVzCCijI"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dark attention block -->
+      <section class="content-section bg-dark">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+              <div class="content-body">
+                <h2>A strong attention block</h2>
+                <p>
+                  Use this design sparingly. It's (intentionally) very strong, and will overpower the page if it's used
+                  too often, or with content that's too long. Our recommendation is that it should only content a very
+                  brief passage of text 1 or 2 calls to action.
+                </p>
+                <p>
+                  <a href="javascript:void(0)" class="btn btn-light">Light button</a>
+                  <a href="javascript:void(0)" class="btn btn-secondary">Secondary button</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Single image  -->
+      <section class="content-section">
+        <div class="container">
+          <div class="content-body">
+            <h2>A single image</h2>
+            <img src="assets/images/yoga_temp_1.jpg" alt="" class="w-100 rounded-2" />
+            <h2>With fixed ratio</h2>
+            <div class="ratio ratio-16x9 rounded-2 overflow-hidden">
+              <img src="assets/images/yoga_temp_1.jpg" alt="" class="w-100 h-100 object-fit-cover" />
+            </div>
+            <p>
+              Note, fixed aspect ratio is great if you're sure the image composition is appropriate. In this instance it
+              isn't.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery  -->
+      <section class="content-section">
+        <div class="container">
+          <div class="content-body">
+            <h2>Gallery</h2>
+
+            <div class="bwy-gallery swiper" data-gallery>
+              <div class="swiper-wrapper">
+                <button class="swiper-slide bwy-gallery-slide" type="button">
+                  <img src="assets/images/yoga_temp_1.jpg" alt="Yoga gallery image 1" />
+                </button>
+
+                <button class="swiper-slide bwy-gallery-slide" type="button">
+                  <img src="assets/images/yoga_temp_2.jpg" alt="Yoga gallery image 2" />
+                </button>
+
+                <button class="swiper-slide bwy-gallery-slide" type="button">
+                  <img src="assets/images/yoga_temp_3.jpg" alt="Yoga gallery image 3" />
+                </button>
+
+                <button class="swiper-slide bwy-gallery-slide" type="button">
+                  <img src="assets/images/yoga_temp_4.jpg" alt="Yoga gallery image 4" />
+                </button>
+
+                <button class="swiper-slide bwy-gallery-slide" type="button">
+                  <img src="assets/images/yoga_temp_5.jpg" alt="Yoga gallery image 5" />
+                </button>
+
+                <button class="swiper-slide bwy-gallery-slide" type="button">
+                  <img src="assets/images/yoga_temp_6.jpg" alt="Yoga gallery image 6" />
+                </button>
+
+                <button class="swiper-slide bwy-gallery-slide" type="button">
+                  <img src="assets/images/yoga_temp_7.jpg" alt="Yoga gallery image 7" />
+                </button>
+
+                <button class="swiper-slide bwy-gallery-slide" type="button">
+                  <img src="assets/images/yoga_temp_8.jpg" alt="Yoga gallery image 8" />
+                </button>
+
+                <button class="swiper-slide bwy-gallery-slide" type="button">
+                  <img src="assets/images/yoga_temp_9.jpg" alt="Yoga gallery image 9" />
+                </button>
+
+                <button class="swiper-slide bwy-gallery-slide" type="button">
+                  <img src="assets/images/yoga_temp_10.jpg" alt="Yoga gallery image 10" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer  -->
+    <div data-component="site-footer"></div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/announcements.js"></script>
+    <script src="js/yoga.js"></script>
+
+    <!-- Icons  -->
+    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+
+    <!-- Video handling  -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <!-- Prevents multiple videos playing at once  -->
+    <script src="js/videohandling.js"></script>
+
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Gallery JS (depends on swiper) -->
+    <script src="js/gallery.js"></script>
+  </body>
+</html>

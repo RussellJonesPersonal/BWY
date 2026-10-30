@@ -1,0 +1,164 @@
+.content-body {
+  // Keep long-form text comfortable to read
+  font-size: 1.05rem;
+  line-height: 1.75;
+
+  // =========================
+  // PARAGRAPHS
+  // =========================
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  // =========================
+  // HEADINGS
+  // =========================
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    color: $primary;
+  }
+
+  h2 {
+    margin-top: 3.5rem;
+  }
+
+  h3 {
+    margin-top: 2.75rem;
+  }
+
+  h4 {
+    margin-top: 2.25rem;
+  }
+
+  h5,
+  h6 {
+    margin-top: 2rem;
+  }
+
+  // Don't add a huge gap if heading is first thing
+  > h2:first-child,
+  > h3:first-child,
+  > h4:first-child {
+    margin-top: 0;
+  }
+
+  // =========================
+  // LISTS
+  // =========================
+
+  ul,
+  ol {
+    margin-block: 1.5rem 2rem;
+    padding-left: 1.75rem;
+  }
+
+  li {
+    padding-left: 0.35rem;
+
+    & + li {
+      margin-top: 0.65rem;
+    }
+  }
+
+  // Colour bullets / numbers without colouring text
+  li::marker {
+    color: $primary;
+    font-weight: 700;
+  }
+
+  // =========================
+  // LINKS
+  // =========================
+
+  a {
+    text-underline-offset: 0.15em;
+    text-decoration-thickness: 0.08em;
+  }
+
+  // =========================
+  // HORIZONTAL RULE
+  // =========================
+
+  hr {
+    margin-block: 3rem;
+
+    opacity: 0.2;
+  }
+
+  // =========================
+  // IMAGES
+  // =========================
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  // =========================
+  // LARGE SCREENS
+  // =========================
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1.1rem;
+    line-height: 1.8;
+
+    p {
+      margin-bottom: 1.75rem;
+    }
+
+    h2 {
+      margin-top: 4rem;
+    }
+
+    h3 {
+      margin-top: 3rem;
+    }
+  }
+}
+
+.sidebar-sticky {
+  @include media-breakpoint-up(lg) {
+    position: sticky;
+    top: 2rem;
+    padding-block: 4rem;
+    padding-left: 2rem;
+    margin-left: 1rem;
+    border-left: 1px solid $gray-200;
+  }
+  @include media-breakpoint-up(xl) {
+    padding-left: 3rem;
+    margin-left: 2rem;
+  }
+}
+$primary-light: mix($white, $primary, 45%);
+.bg-dark .content-body {
+  color: $white;
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $primary-light;
+  }
+}
+
+.content-body .bwy-accordion {
+  .accordion-header {
+    margin: 0;
+    padding: 0;
+
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+}

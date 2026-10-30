@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Compare plans - The British Wheel of Yoga</title>
+    <!-- Google font  -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Swiper js  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?v=5" />
+    <!-- Boostrap cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css?v=5" rel="stylesheet" />
+    <!-- Custom style  -->
+    <link href="css/style.css?v=5" rel="stylesheet" />
+    <script>
+      document.documentElement.classList.add("page-loading");
+    </script>
+
+    <link rel="icon" href="favico.png" sizes="any" />
+    <link rel="icon" type="image/png" href="favico.png" />
+  </head>
+  <body>
+    <main>
+      <!-- Navbar  -->
+      <!-- This loads /partials/nav.html, and the js/navigation.js file adds .active classes to the defined section and page -->
+      <div data-component="main-nav" data-section="" data-page=""></div>
+
+      <!-- Page title -->
+      <!-- Breadcrumb is auto-generated using the js/navigation.js script  -->
+
+      <header class="page-title">
+        <div class="container">
+          <nav data-component="breadcrumb" aria-label="breadcrumb"></nav>
+
+          <h1>Compare plans</h1>
+
+          <div class="page-title-art">
+            <img
+              src="assets/images/poses/pose_silhouette_1.svg"
+              alt="An yoga pose"
+              class="page-title-icon"
+              id="random-pose"
+            />
+          </div>
+        </div>
+      </header>
+
+      <section class="content-section">
+        <div class="container">
+          <div class="content-body">
+            <h1 class="h2">Compare memberships</h1>
+
+            <p>Compare BWY membership options and find the one that best suits your yoga journey.</p>
+
+            <p class="small text-muted membership-comparison-swipe">Swipe sideways to compare plans.</p>
+          </div>
+
+          <div
+            class="membership-comparison"
+            data-membership-comparison
+            tabindex="0"
+            aria-label="BWY membership comparison"
+          >
+            <table class="table membership-comparison-table">
+              <thead>
+                <tr>
+                  <th scope="col" class="membership-comparison-benefit">Benefit</th>
+
+                  <th scope="col" data-plan="free">
+                    <span class="membership-plan-name">Free Account</span>
+                    <span class="membership-plan-price">Free</span>
+                  </th>
+
+                  <th scope="col" data-plan="member">
+                    <span class="membership-plan-name">BWY Member</span>
+                    <span class="membership-plan-price">£48</span>
+                  </th>
+
+                  <th scope="col" data-plan="family">
+                    <span class="membership-plan-name">Family</span>
+                    <span class="membership-plan-price">£27</span>
+                  </th>
+
+                  <th scope="col" data-plan="student-teacher">
+                    <span class="membership-plan-name">Student Teacher</span>
+                    <span class="membership-plan-price">£108</span>
+                  </th>
+
+                  <th scope="col" data-plan="teacher">
+                    <span class="membership-plan-name"> Teacher / Associate Teacher </span>
+                    <span class="membership-plan-price">£108</span>
+                  </th>
+
+                  <th scope="col" data-plan="overseas-teacher">
+                    <span class="membership-plan-name">Overseas Teacher</span>
+                    <span class="membership-plan-price">£60</span>
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- =========================
+               GENERAL BENEFITS
+          ========================== -->
+
+                <tr class="membership-comparison-group">
+                  <th scope="rowgroup">Membership benefits</th>
+                  <td colspan="6" aria-hidden="true"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Local BWY communities</th>
+
+                  <td data-plan="free">—</td>
+
+                  <td data-plan="member">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="family">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="student-teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="overseas-teacher">—</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Online Member Sessions</th>
+
+                  <td data-plan="free">—</td>
+
+                  <td data-plan="member">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="family">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="student-teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="overseas-teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Training, workshops and events</th>
+
+                  <td data-plan="free">—</td>
+
+                  <td data-plan="member">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="family">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="student-teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="overseas-teacher">
+                    <span class="membership-cell-note">Online</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th scope="row"><em>Spectrum</em> magazine</th>
+
+                  <td data-plan="free">—</td>
+
+                  <td data-plan="member">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="family">
+                    <span class="membership-cell-note">Shared copy</span>
+                  </td>
+
+                  <td data-plan="student-teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="overseas-teacher">—</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Member discounts and offers</th>
+
+                  <td data-plan="free">—</td>
+
+                  <td data-plan="member">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="family">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="student-teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="overseas-teacher">—</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Yoga in Action volunteering</th>
+
+                  <td data-plan="free">—</td>
+
+                  <td data-plan="member">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="family">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="student-teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="overseas-teacher">—</td>
+                </tr>
+
+                <!-- =========================
+               TEACHER BENEFITS
+          ========================== -->
+
+                <tr class="membership-comparison-group">
+                  <th scope="rowgroup">Teacher benefits</th>
+                  <td colspan="6" aria-hidden="true"></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Teaching insurance</th>
+
+                  <td data-plan="free">—</td>
+                  <td data-plan="member">—</td>
+                  <td data-plan="family">—</td>
+
+                  <td data-plan="student-teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="overseas-teacher">—</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Promote classes, workshops and retreats on the BWY website</th>
+
+                  <td data-plan="free">—</td>
+                  <td data-plan="member">—</td>
+                  <td data-plan="family">—</td>
+
+                  <td data-plan="student-teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="overseas-teacher">—</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Teaching and CPD resources</th>
+
+                  <td data-plan="free">—</td>
+                  <td data-plan="member">—</td>
+                  <td data-plan="family">—</td>
+
+                  <td data-plan="student-teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="teacher">
+                    <span class="iconify membership-star" data-icon="mdi:star" aria-hidden="true"></span>
+                    <span class="visually-hidden">Included</span>
+                  </td>
+
+                  <td data-plan="overseas-teacher">
+                    <span class="membership-cell-note">Online</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Teacher logo</th>
+
+                  <td data-plan="free">—</td>
+                  <td data-plan="member">—</td>
+                  <td data-plan="family">—</td>
+
+                  <td data-plan="student-teacher">
+                    <span class="membership-cell-note">Student Teacher</span>
+                  </td>
+
+                  <td data-plan="teacher">
+                    <span class="membership-cell-note">Teacher / Associate</span>
+                  </td>
+
+                  <td data-plan="overseas-teacher">—</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Central registry of exercise professionals</th>
+
+                  <td data-plan="free">—</td>
+                  <td data-plan="member">—</td>
+                  <td data-plan="family">—</td>
+                  <td data-plan="student-teacher">—</td>
+
+                  <td data-plan="teacher">
+                    <span class="membership-cell-note">BWY Teachers</span>
+                  </td>
+
+                  <td data-plan="overseas-teacher">—</td>
+                </tr>
+
+                <tr>
+                  <th scope="row">TOTUM student card</th>
+
+                  <td data-plan="free">—</td>
+                  <td data-plan="member">—</td>
+                  <td data-plan="family">—</td>
+
+                  <td data-plan="student-teacher">
+                    <span class="membership-cell-note">Eligible students</span>
+                  </td>
+
+                  <td data-plan="teacher">—</td>
+                  <td data-plan="overseas-teacher">—</td>
+                </tr>
+
+                <!-- =========================
+               ACTIONS
+          ========================== -->
+
+                <tr class="membership-comparison-actions">
+                  <th scope="row">Choose a plan</th>
+
+                  <td data-plan="free">
+                    <a href="register.html" class="btn btn-outline-primary btn-sm"> Choose </a>
+                  </td>
+
+                  <td data-plan="member">
+                    <a href="register.html" class="btn btn-outline-primary btn-sm"> Choose </a>
+                  </td>
+
+                  <td data-plan="family">
+                    <a href="register.html" class="btn btn-outline-primary btn-sm"> Choose </a>
+                  </td>
+
+                  <td data-plan="student-teacher">
+                    <a href="register.html" class="btn btn-outline-primary btn-sm"> Choose </a>
+                  </td>
+
+                  <td data-plan="teacher">
+                    <a href="register.html" class="btn btn-outline-primary btn-sm"> Choose </a>
+                  </td>
+
+                  <td data-plan="overseas-teacher">
+                    <a href="register.html" class="btn btn-outline-primary btn-sm"> Choose </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="content-body membership-comparison-notes">
+            <p class="small text-muted">
+              Family Membership is for an additional member living at the same address as an existing BWY member. Family
+              members share print benefits such as <em>Spectrum</em>.
+            </p>
+
+            <p class="small text-muted">
+              Overseas memberships focus on benefits that can be accessed online. Teaching insurance is not included
+              with Overseas Teacher Membership.
+            </p>
+
+            <p class="small text-muted">
+              Teacher and Associate Teacher membership share many benefits, but some entitlements depend on your
+              membership status.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer  -->
+    <div data-component="site-footer"></div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/announcements.js"></script>
+    <script src="js/yoga.js"></script>
+
+    <!-- Icons  -->
+    <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+
+    <!-- Benefits handling -->
+    <script src="js/benefits.js"></script>
+  </body>
+</html>

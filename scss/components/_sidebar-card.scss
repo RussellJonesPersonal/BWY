@@ -1,0 +1,73 @@
+.sidebar-sticky {
+  @include media-breakpoint-up(lg) {
+    position: sticky;
+    top: 2rem;
+  }
+}
+
+.sidebar-card {
+  padding: 0;
+
+  background-color: $gray-100;
+  border: 0;
+
+  font-size: 0.95rem;
+  line-height: 1.6;
+
+  &:hover {
+    background-color: $gray-100;
+  }
+
+  .card-body {
+    padding: 1.5rem;
+  }
+
+  .card-header {
+    padding-block: 0.75rem;
+    background-color: $gray-100;
+    color: $primary;
+    border-bottom: 1px solid $gray-300;
+  }
+
+  .card-img-top {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: cover;
+  }
+}
+
+.sidebar-list-group {
+  gap: 1px;
+
+  background-color: $gray-300;
+
+  .list-group-item {
+    padding: 0.75rem 1.5rem;
+
+    background-color: $gray-100;
+    border: 0;
+
+    color: $primary;
+    font-size: inherit;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      background-color: $gray-200;
+      color: $primary-700;
+    }
+
+    &.active {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+// =========================
+// SPLIT CONTENT BLOCK
+// =========================
+
+.content-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @include media-breakpoint-up(md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+    align-items: stretch;
+  }
+
+  @include media-breakpoint-up(xl) {
+    gap: 4rem;
+  }
+}
+
+.content-split__item {
+  min-width: 0;
+}
+
+// =========================
+// IMAGE PANEL
+// =========================
+
+.content-split__media {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+
+  overflow: hidden;
+
+  img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+}
+
+// =========================
+// TEXT PANEL
+// =========================
+
+.content-split__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin-top: 1.5rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  p,
+  ul,
+  ol {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

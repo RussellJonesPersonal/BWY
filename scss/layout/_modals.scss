@@ -1,0 +1,19 @@
+@include media-breakpoint-up(lg) {
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding-inline: 2.5rem;
+  }
+
+  .modal-header {
+    padding-block: 2rem 1.5rem;
+  }
+
+  .modal-body {
+    padding-block: 2rem;
+  }
+
+  .modal-footer {
+    padding-block: 1.5rem 2rem;
+  }
+}

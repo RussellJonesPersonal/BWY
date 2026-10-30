@@ -1,46 +1,55 @@
-const newsSwiper = new Swiper(".news-swiper", {
-  loop: true,
-  centeredSlides: true,
-  spaceBetween: 24,
-  speed: 600,
+function initCardSwiper(selector) {
+  const swiperEl = document.querySelector(selector);
 
-  grabCursor: true,
+  if (!swiperEl) return null;
 
-  // ✅ stability fixes
-  observer: true,
-  observeParents: true,
-  preloadImages: true,
-  updateOnImagesReady: true,
+  const paginationEl = swiperEl.querySelector(".swiper-pagination");
 
-  pagination: {
-    el: ".news-swiper .swiper-pagination",
-    clickable: true,
-  },
+  return new Swiper(swiperEl, {
+    // ======================
+    // LAYOUT
+    // ======================
 
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-  },
+    slidesPerView: "auto",
+    centeredSlides: true,
+    spaceBetween: 24,
 
-  // ✅ your original breakpoints (unchanged)
-  breakpoints: {
-    0: { slidesPerView: 1.2 },
-    992: { slidesPerView: 2.2 },
-    1400: { slidesPerView: 3.2 },
-    2000: { slidesPerView: 4.2 },
-    2600: { slidesPerView: 5.2 },
-  },
+    // ======================
+    // BEHAVIOUR
+    // ======================
 
-  on: {
-    init(swiper) {
-      requestAnimationFrame(() => {
-        swiper.update();
-      });
+    loop: true,
+    speed: 600,
+    grabCursor: true,
+
+    observer: true,
+    observeParents: true,
+
+    // ======================
+    // PAGINATION
+    // ======================
+
+    pagination: {
+      el: paginationEl,
+      clickable: true,
     },
-  },
-});
 
-// ✅ final safety pass after full load
-window.addEventListener("load", () => {
-  newsSwiper.update();
-});
+    // ======================
+    // AUTOPLAY
+    // ======================
+
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+  });
+}
+
+// ======================
+// INITIALISE CAROUSELS
+// ======================
+
+const newsSwiper = initCardSwiper(".news-swiper");
+const eventsSwiper = initCardSwiper(".events-swiper");
+const courseSwiper = initCardSwiper(".course-swiper");

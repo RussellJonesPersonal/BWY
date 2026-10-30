@@ -1,0 +1,14 @@
+.content-columns {
+  @include media-breakpoint-up(lg) {
+    columns: 2;
+    column-gap: 3rem;
+  }
+
+  p {
+    break-inside: avoid;
+  }
+
+  p:first-child {
+    margin-top: 0;
+  }
+}

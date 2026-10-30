@@ -1,0 +1,9 @@
+body {
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+
+.page-loading body {
+  visibility: hidden;
+  opacity: 0;
+}

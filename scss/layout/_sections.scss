@@ -2,6 +2,10 @@
   padding: clamp(3rem, 2rem + 2vw, 6rem) 0;
 }
 
+.section-sm {
+  padding: clamp(1.75rem, 1.25rem + 1.2vw, 3.5rem) 0;
+}
+
 .section-lg {
   padding: clamp(4rem, 3rem + 3vw, 8rem) 0;
 }
@@ -38,8 +42,16 @@
   background-color: var(--bs-gray-100);
 }
 
+.bg-gray-200 {
+  background-color: var(--bs-gray-200);
+}
+
 .bg-gradient-light {
   background: linear-gradient(to bottom, #fff 0%, var(--bs-gray-200) 100%);
+}
+
+.bg-gradient-light-invert {
+  background: linear-gradient(to bottom, var(--bs-gray-200) 0%, #fff 100%);
 }
 
 // Narrow container modifiers

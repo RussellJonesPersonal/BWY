@@ -1,23 +1,58 @@
+//
+// SWIPER CARD SIZING
+// ======================
+//
+// Shared by News, Events and Training Courses.
+//
+// Swiper uses slidesPerView: "auto".
+// CSS controls the width of individual cards.
+//
+// Cards remain approximately 340 x 450px on
+// larger screens, shrinking on mobile devices.
+//
+
+.news-swiper,
+.events-swiper,
+.course-swiper {
+  .swiper-slide {
+    width: min(340px, 82vw);
+    max-width: 100%;
+  }
+}
+
+// ======================
+// NEWS / EVENTS / COURSES CARD
+// ======================
+
 .news-card {
   position: relative;
   display: block;
   overflow: hidden;
+
   border-radius: 0.75rem;
-  color: #fff;
+
+  color: $white;
   text-decoration: none;
 
-  // ❌ remove movement + shadow transitions
   transition: background-color 0.3s ease;
 
   // ======================
-  // RESPONSIVE RATIO
+  // CARD PROPORTIONS
   // ======================
 
-  aspect-ratio: 3 / 4;
+  /*
+   * Based on the preferred mobile card:
+   * approximately 340 x 450px.
+   *
+   * Maintain the same portrait ratio at every
+   * viewport size. Swiper controls positioning
+   * while CSS controls the card width.
+   */
 
-  @include media-breakpoint-up(lg) {
-    aspect-ratio: 3 / 2;
-  }
+  aspect-ratio: 34 / 45;
+
+  // Helps Swiper's flex layout behave predictably
+  min-width: 0;
 
   // ======================
   // MEDIA
@@ -28,17 +63,24 @@
     inset: 0;
 
     img {
+      display: block;
+
       width: 100%;
       height: 100%;
+
       object-fit: cover;
 
-      transform: scale(1.01); // prevents subpixel gaps
+      // Prevents subpixel gaps
+      transform: scale(1.01);
+
       transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+      will-change: transform;
     }
   }
 
   // ======================
-  // BASE OVERLAY (GRADIENT)
+  // BASE OVERLAY
   // ======================
 
   &__overlay {
@@ -66,9 +108,10 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    text-align: center;
 
     padding: 2rem;
+
+    text-align: center;
   }
 
   // ======================
@@ -76,13 +119,16 @@
   // ======================
 
   &__title {
-    font-weight: 700;
     margin: 0;
 
-    transform: translateY(0);
-    opacity: 1;
+    font-weight: 700;
 
-    transition: all 0.35s ease;
+    opacity: 1;
+    transform: translateY(0);
+
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease;
   }
 
   // ======================
@@ -90,9 +136,6 @@
   // ======================
 
   &__summary {
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-
     position: absolute;
     inset: 0;
 
@@ -106,24 +149,33 @@
     opacity: 0;
     transform: translateY(-40px);
 
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+
     transition:
       opacity 0.4s ease,
       transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 
     p {
       margin: 0.5rem 0 0;
+
       font-size: 0.95rem;
       line-height: 1.4;
     }
   }
 
+  // ======================
+  // METADATA
+  // ======================
+
   &__meta {
     font-size: 0.8rem;
     opacity: 0.85;
 
-    will-change: transform, opacity;
     transform: translateZ(0);
     backface-visibility: hidden;
+
+    will-change: transform, opacity;
 
     span + span {
       margin-left: 0.5rem;
@@ -131,10 +183,11 @@
   }
 
   // ======================
-  // HOVER (FIXED)
+  // HOVER / KEYBOARD FOCUS
   // ======================
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     .news-card__media img {
       transform: scale(1.15);
     }
@@ -151,6 +204,73 @@
     .news-card__summary {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  // ======================
+  // TOUCH DEVICES
+  // ======================
+
+  /*
+   * Touchscreen users cannot reliably hover.
+   * Display the title and summary together
+   * rather than hiding information behind
+   * an interaction.
+   */
+
+  @media (hover: none) {
+    &__content {
+      justify-content: flex-end;
+      padding: 1.25rem;
+    }
+
+    &__title {
+      opacity: 1;
+      transform: none;
+    }
+
+    &__summary {
+      position: static;
+      inset: auto;
+
+      padding: 0.5rem 0 0;
+
+      opacity: 1;
+      transform: none;
+
+      // Prevent long descriptions overwhelming
+      // smaller cards.
+      p {
+        display: -webkit-box;
+        overflow: hidden;
+
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+
+        line-clamp: 3;
+
+        font-size: 0.85rem;
+      }
+    }
+
+    &:hover {
+      .news-card__media img {
+        transform: scale(1.01);
+      }
+
+      .news-card__overlay {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.1) 100%);
+      }
+
+      .news-card__title {
+        opacity: 1;
+        transform: none;
+      }
+
+      .news-card__summary {
+        opacity: 1;
+        transform: none;
+      }
     }
   }
 }

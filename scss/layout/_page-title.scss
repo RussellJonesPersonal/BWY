@@ -1,0 +1,203 @@
+.page-title {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+
+  background-color: $gray-200;
+
+  // Essential: artwork must be allowed to breach the top
+  overflow: visible;
+}
+
+.page-title .container {
+  position: relative;
+
+  padding-block: 2rem;
+}
+
+.breadcrumb {
+  color: $body-color;
+  font-size: small;
+
+  a {
+    text-decoration: none;
+  }
+
+  .breadcrumb-item.active {
+    color: $body-color;
+    font-weight: bold;
+  }
+
+  .breadcrumb-item + .breadcrumb-item::before {
+    color: $body-color;
+  }
+}
+
+// =========================
+// PAGE TITLE ART
+// =========================
+
+.page-title-art {
+  display: none;
+  pointer-events: none;
+
+  @include media-breakpoint-up(lg) {
+    display: block;
+    position: absolute;
+
+    top: -3rem;
+    bottom: 0;
+    right: 1rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    top: -4rem;
+    right: 2rem;
+  }
+}
+
+.page-title-icon {
+  display: block;
+
+  width: auto;
+  height: 100%;
+  filter: brightness(0) invert(74%);
+  object-fit: contain;
+}
+
+// =========================
+// MD+
+// =========================
+
+@include media-breakpoint-up(lg) {
+  .page-title {
+    background-color: transparent;
+  }
+
+  .page-title .container {
+    padding: 2rem;
+    padding-right: 11rem;
+
+    background-color: $gray-200;
+    border-radius: $border-radius-lg;
+  }
+}
+
+// =========================
+// JUMBOTRON HEADER
+// =========================
+
+.jumbotron-header {
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+
+  min-height: 22rem;
+  margin-bottom: 2rem;
+
+  overflow: hidden;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  color: $white;
+
+  // Dark tint over CMS-managed image
+  &::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    background: rgba($black, 0.45);
+
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    padding-block: 2rem;
+  }
+
+  h1 {
+    margin-bottom: 0;
+
+    color: $white;
+  }
+
+  .breadcrumb {
+    color: $white;
+
+    a {
+      color: $white;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+
+    .breadcrumb-item.active {
+      color: $white;
+      font-weight: bold;
+    }
+
+    .breadcrumb-item + .breadcrumb-item::before {
+      color: rgba($white, 0.75);
+    }
+  }
+
+  // ======================
+  // ≥ LG
+  // ======================
+
+  @include media-breakpoint-up(lg) {
+    min-height: 32rem;
+
+    .container {
+      padding-block: 3rem;
+    }
+  }
+
+  // ======================
+  // ≥ XL
+  // ======================
+
+  @include media-breakpoint-up(xl) {
+    width: map-get($container-max-widths, xl);
+
+    margin-inline: auto;
+
+    border-radius: 1rem;
+    min-height: 32rem;
+  }
+
+  // ======================
+  // ≥ XXL
+  // ======================
+
+  @include media-breakpoint-up(xxl) {
+    width: map-get($container-max-widths, xxl);
+  }
+
+  // ======================
+  // ≥ 1800px
+  // Same widening logic as homepage hero
+  // ======================
+
+  @media (min-width: 1800px) {
+    min-height: 38rem;
+    --jumbotron-start-width: 1440px;
+
+    --jumbotron-final-width: calc(var(--jumbotron-start-width) + ((100dvw - var(--jumbotron-start-width)) / 2));
+
+    width: var(--jumbotron-final-width);
+    max-width: none;
+  }
+}

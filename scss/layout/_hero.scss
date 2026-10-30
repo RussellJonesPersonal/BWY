@@ -2,6 +2,57 @@
   --hero-text-max: 700px;
   --hero-height: 420px;
 
+  // ======================
+  // PHOTO ZOOM TUNING
+  // ======================
+
+  --hero-photo-duration: 4s;
+  --hero-photo-start-scale: 1;
+  --hero-photo-end-scale: 1.42;
+
+  // ======================
+  // LARGE HERO REVEAL
+  // ======================
+
+  --hero-box-duration: 2s;
+
+  --hero-box-ease: linear(
+    0,
+    0.123 5%,
+    0.366 15.5%,
+    0.489 20.4%,
+    0.631 25.5%,
+    0.905 34.5%,
+    1 37.8%,
+    0.914 41.3%,
+    0.881 42.9%,
+    0.856 44.4%,
+    0.836 45.9%,
+    0.821 47.4%,
+    0.812 48.9%,
+    0.809 50.3%,
+    0.812 51.6%,
+    0.818 53%,
+    0.83 54.4%,
+    0.847 55.9%,
+    0.881 58.3%,
+    0.971 63.6%,
+    1 65.5%,
+    0.974 67.5%,
+    0.956 69.4%,
+    0.945 71.3%,
+    0.942 73.2%,
+    0.944 74.9%,
+    0.952 76.7%,
+    0.989 82.4%,
+    1 84.5%,
+    0.992 86.9%,
+    0.989 89.3%,
+    0.991 91.4%,
+    0.999 96.7%,
+    1
+  );
+
   position: relative;
   min-height: clamp(420px, 60vh, 550px);
 
@@ -10,43 +61,57 @@
   }
 
   // ======================
-  // MOBILE: full background image
+  // BASE / MOBILE
   // ======================
+
   .hero-bg {
     position: absolute;
     inset: 0;
     z-index: 1;
+
     overflow: hidden;
 
     img {
       position: absolute;
       inset: 0;
+
+      display: block;
+
       width: 100%;
       height: 100%;
+
       object-fit: cover;
       object-position: 30% center;
-      transform: scale(1.3);
+
+      transform: scale(var(--hero-photo-start-scale));
       transform-origin: center;
-      display: block;
+
+      will-change: transform;
     }
 
     &::after {
       content: "";
+
       position: absolute;
       inset: 0;
+
       background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
+
       pointer-events: none;
     }
   }
 
   .hero-content {
     position: relative;
+    z-index: 2;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
+
     padding: 12rem 1.5rem 2rem;
-    z-index: 2;
+
+    text-align: center;
   }
 
   .hero-content-inner {
@@ -54,34 +119,70 @@
   }
 
   .hero-buttons {
-    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+
+    margin-top: 1.5rem;
+  }
+
+  // ======================
+  // ≥ SM
+  // ======================
+
+  @include media-breakpoint-up(sm) {
+    --hero-photo-start-scale: 1;
+    --hero-photo-end-scale: 1.2;
+  }
+
+  // ======================
+  // ≥ MD
+  // ======================
+
+  @include media-breakpoint-up(md) {
+    --hero-photo-start-scale: 1;
+    --hero-photo-end-scale: 1.4;
+  }
+
+  // ======================
+  // ≥ LG
+  // ======================
+
+  @include media-breakpoint-up(lg) {
+    --hero-photo-start-scale: 1;
+    --hero-photo-end-scale: 1.4;
   }
 
   // ======================
   // ≥ XL
   // ======================
+
   @include media-breakpoint-up(xl) {
+    --hero-photo-start-scale: 1;
+    --hero-photo-end-scale: 1.3;
+
     min-height: unset;
 
     .hero-inner {
       height: var(--hero-height);
       max-width: map-get($container-max-widths, xl);
+
       margin-inline: auto;
     }
 
     .hero-bg {
       top: 0;
+      bottom: auto;
       left: 50%;
-      transform: translateX(-50%);
-      height: 100%;
+
       width: calc(100% + ((100dvw - 100%) / 2));
+      height: 100%;
+
+      transform: translateX(-50%);
+
       border-radius: 1rem;
 
       img {
-        transform: scale(1);
         object-position: center center;
       }
 
@@ -92,41 +193,173 @@
 
     .hero-content {
       height: 100%;
+
       justify-content: flex-end;
-      text-align: right;
+
       padding: 3rem;
+
+      text-align: right;
     }
 
     .hero-buttons {
-      margin-top: 2rem;
       flex-direction: row;
       justify-content: flex-end;
       gap: 1rem;
+
+      margin-top: 2rem;
     }
   }
 
   // ======================
   // ≥ XXL
   // ======================
+
   @include media-breakpoint-up(xxl) {
+    --hero-height: 600px;
+
+    --hero-photo-start-scale: 1;
+    --hero-photo-end-scale: 1.15;
+
     .hero-inner {
       max-width: map-get($container-max-widths, xxl);
     }
-
-    --hero-height: 600px;
   }
 
   // ======================
-  // ≥ 1800px (custom breakpoint)
+  // ≥ 1800px
   // ======================
+
   @media (min-width: 1800px) {
     --hero-height: 700px;
+
+    --hero-photo-start-scale: 1;
+    --hero-photo-end-scale: 1.2;
+
+    --hero-start-width: 1440px;
+
+    /*
+     * Final large-screen hero width.
+     *
+     * At 1920px:
+     * 1440 + ((1920 - 1440) / 2) = 1680px
+     */
+    --hero-final-width: calc(var(--hero-start-width) + ((100dvw - var(--hero-start-width)) / 2));
+
+    /*
+     * Initial crop from each side.
+     */
+    --hero-start-crop: calc((var(--hero-final-width) - var(--hero-start-width)) / 2);
+
+    // ======================
+    // FIXED OUTER HERO
+    // ======================
+
+    .hero-inner {
+      width: var(--hero-final-width);
+      max-width: none;
+      height: var(--hero-height);
+
+      margin-inline: auto;
+
+      overflow: hidden;
+
+      clip-path: inset(0 var(--hero-start-crop) 0 var(--hero-start-crop) round 1rem);
+
+      will-change: clip-path;
+    }
+
+    // ======================
+    // FIXED IMAGE STAGE
+    // ======================
+
+    .hero-bg {
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      transform: none;
+
+      overflow: hidden;
+      border-radius: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center center;
+
+        transform: scale(var(--hero-photo-start-scale));
+        transform-origin: center;
+
+        will-change: transform;
+      }
+    }
+
+    // ======================
+    // CONTENT
+    // ======================
+
+    .hero-content {
+      width: 100%;
+      max-width: 1440px;
+
+      margin-inline: auto;
+    }
+
+    // ======================
+    // LARGE HERO REVEAL
+    // ======================
+
+    &.is-loaded {
+      .hero-inner {
+        animation: hero-box-expand var(--hero-box-duration) var(--hero-box-ease) forwards;
+      }
+    }
+  }
+}
+
+// ======================
+// PHOTO ZOOM
+// SINGLE GLOBAL TRIGGER
+// ======================
+
+.hero.is-loaded .hero-bg img {
+  animation: hero-photo-zoom var(--hero-photo-duration) ease-out forwards;
+}
+
+@keyframes hero-photo-zoom {
+  from {
+    transform: scale(var(--hero-photo-start-scale));
+  }
+
+  to {
+    transform: scale(var(--hero-photo-end-scale));
+  }
+}
+
+// ======================
+// LARGE DESKTOP HERO REVEAL
+// ======================
+
+@keyframes hero-box-expand {
+  from {
+    clip-path: inset(
+      0 calc((var(--hero-final-width) - var(--hero-start-width)) / 2) 0
+        calc((var(--hero-final-width) - var(--hero-start-width)) / 2) round 1rem
+    );
+  }
+
+  to {
+    clip-path: inset(0 0 0 0 round 1rem);
   }
 }
 
 // ======================
 // TYPOGRAPHY
 // ======================
+
 .hero h1 {
   font-size: 2.5rem;
   color: white;
@@ -147,6 +380,48 @@ h1 span {
 .js-animate-text {
   visibility: hidden;
 }
+
 .js-animate-text.is-ready {
   visibility: visible;
+}
+
+// ======================
+// REDUCED MOTION
+// ======================
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .hero.is-loaded {
+    .hero-inner,
+    .hero-bg img {
+      animation: none !important;
+      will-change: auto;
+    }
+  }
+
+  .hero .hero-bg img {
+    transform: scale(var(--hero-photo-start-scale));
+  }
+
+  .hero .hero-inner {
+    @media (min-width: 1800px) {
+      width: var(--hero-final-width);
+
+      clip-path: inset(0 0 0 0 round 1rem);
+    }
+  }
+}
+
+.hero.is-loaded .hero-bg img {
+  animation: hero-photo-zoom var(--hero-photo-duration) ease-out forwards !important;
+}
+
+@keyframes hero-photo-zoom {
+  from {
+    transform: scale(var(--hero-photo-start-scale));
+  }
+
+  to {
+    transform: scale(var(--hero-photo-end-scale));
+  }
 }

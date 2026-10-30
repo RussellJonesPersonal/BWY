@@ -252,3 +252,10 @@ $btn-hover-border-shade-amount: 10%;
 .btn-square {
   border-radius: $btn-border-radius; // 👈 now soft instead of sharp
 }
+
+/* =========================
+   Modals
+========================= */
+$modal-inner-padding: 1.5rem;
+$modal-header-padding-x: 1.5rem;
+$modal-header-padding-y: 1.5rem;

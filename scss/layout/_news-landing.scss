@@ -1,0 +1,149 @@
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 2rem;
+}
+
+.news-item {
+  grid-column: 1 / -1;
+  padding-block: 2rem;
+  border-bottom: 1px solid $gray-300;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:hover {
+    .news-title {
+      color: lighten($primary, 10%);
+    }
+  }
+}
+
+.news-image-link {
+  display: block;
+}
+
+.news-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: $border-radius;
+}
+
+.news-content {
+  padding-top: 1rem;
+}
+
+.news-meta {
+  color: $gray-600;
+  font-size: 0.875rem;
+}
+
+.news-title {
+  font-size: 1.5rem;
+  color: $primary;
+}
+
+.news-summary {
+  display: -webkit-box;
+  margin-bottom: 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+}
+
+// Desktop
+
+@include media-breakpoint-up(lg) {
+  // --------------------------------------------------
+  // 1. Lead story
+  // --------------------------------------------------
+
+  .news-item:nth-child(1) {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 3rem;
+    align-items: center;
+
+    padding-bottom: 2rem;
+    border-bottom: 1px solid $gray-300;
+
+    .news-image {
+      aspect-ratio: 4 / 3;
+    }
+
+    .news-content {
+      padding-top: 0;
+    }
+
+    .news-title {
+      font-size: 2.5rem;
+      line-height: 1.1;
+    }
+
+    .news-summary {
+      font-size: 1.125rem;
+    }
+  }
+
+  // --------------------------------------------------
+  // 2–4. Three-column featured row
+  // --------------------------------------------------
+
+  .news-item:nth-child(2),
+  .news-item:nth-child(3),
+  .news-item:nth-child(4) {
+    grid-column: span 4;
+
+    margin-block: 3rem;
+    padding-block: 0;
+    border-bottom: 0;
+
+    .news-content {
+      padding-top: 1.25rem;
+    }
+  }
+
+  // Horizontal divider after item 4
+
+  .news-item:nth-child(4) {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: -2rem;
+      width: calc(300% + 4rem);
+      border-bottom: 1px solid $gray-300;
+      content: "";
+    }
+  }
+
+  // --------------------------------------------------
+  // 5 onwards. Standard article list
+  // --------------------------------------------------
+
+  .news-item:nth-child(n + 5) {
+    display: grid;
+    grid-template-columns: minmax(220px, 4fr) minmax(0, 8fr);
+    gap: 2.5rem;
+
+    padding-block: 2rem;
+    border-bottom: 1px solid $gray-200;
+
+    .news-content {
+      padding-top: 0;
+    }
+
+    .news-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  .news-item:nth-child(5) {
+    margin-top: 2rem;
+  }
+}
